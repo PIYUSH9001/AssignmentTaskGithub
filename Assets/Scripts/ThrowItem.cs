@@ -5,7 +5,7 @@ public class ThrowItem : MonoBehaviour
     public static GameObject HoldingItem;
     Rigidbody rb;
     [SerializeField] Transform PlayerArmature;
-    private float forceConstant = 100f;
+    private float forceConstant = 125f;
     public void HandleItemThrow()
     {
         if(PlayerItemDetection.isHoldingItem)
@@ -15,7 +15,7 @@ public class ThrowItem : MonoBehaviour
             rb.useGravity = true;
             rb.isKinematic = false;
             rb.AddForce(PlayerArmature.transform.forward * forceConstant * ThrowBtn.forceStrength);
-            rb.AddForce((PlayerArmature.transform.forward * forceConstant * ThrowBtn.forceStrength)/2);
+            rb.AddForce((PlayerArmature.transform.up * forceConstant * ThrowBtn.forceStrength)/2);
             PlayerItemDetection.isHoldingItem = false;
         }
     }
